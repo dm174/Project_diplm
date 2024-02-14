@@ -484,7 +484,12 @@ class ProfileFragment : Fragment() {
                                 .show()
                             true
                         }
-
+                        R.id.navigation_profile -> {
+                            arguments?.userId?.let {
+                                findNavController().navigate(R.id.action_profileFragment_self)
+                            }
+                            true
+                        }
                         else -> false
                     }
                 }
@@ -511,12 +516,7 @@ class ProfileFragment : Fragment() {
                     true
                 }
 
-                R.id.navigation_profile -> {
-                    arguments?.userId?.let {
-                        findNavController().navigate(R.id.action_profileFragment_self)
-                    }
-                    true
-                }
+
 
                 else -> false
             }

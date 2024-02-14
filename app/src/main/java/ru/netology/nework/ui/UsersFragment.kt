@@ -97,6 +97,10 @@ class UsersFragment : Fragment() {
                                 .show()
                             true
                         }
+                        R.id.navigation_profile -> {
+                            findNavController().navigate(R.id.action_usersFragment_to_profileFragment)
+                            true
+                        }
                         else -> false
                     }
                 }
@@ -117,10 +121,7 @@ class UsersFragment : Fragment() {
                 R.id.navigation_users -> {
                     true
                 }
-                R.id.navigation_profile -> {
-                    findNavController().navigate(R.id.action_usersFragment_to_profileFragment)
-                    true
-                }
+
                 else -> false
             }
         }

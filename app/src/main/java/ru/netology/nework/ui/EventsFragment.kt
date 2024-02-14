@@ -265,7 +265,10 @@ class EventsFragment : Fragment() {
                                 .show()
                             true
                         }
-
+                        R.id.navigation_profile -> {
+                            findNavController().navigate(R.id.action_eventsFragment_to_profileFragment)
+                            true
+                        }
                         else -> false
                     }
                 }
@@ -289,10 +292,7 @@ class EventsFragment : Fragment() {
                     true
                 }
 
-                R.id.navigation_profile -> {
-                    findNavController().navigate(R.id.action_eventsFragment_to_profileFragment)
-                    true
-                }
+
 
                 else -> false
             }

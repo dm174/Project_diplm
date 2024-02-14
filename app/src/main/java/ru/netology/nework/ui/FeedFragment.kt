@@ -257,6 +257,10 @@ class FeedFragment : Fragment() {
                                 .show()
                             true
                         }
+                        R.id.navigation_profile -> {
+                            findNavController().navigate(R.id.action_feedFragment_to_profileFragment)
+                            true
+                        }
                         else -> false
                     }
                 }
@@ -277,10 +281,7 @@ class FeedFragment : Fragment() {
                     findNavController().navigate(R.id.action_feedFragment_to_usersFragment)
                     true
                 }
-                R.id.navigation_profile -> {
-                    findNavController().navigate(R.id.action_feedFragment_to_profileFragment)
-                    true
-                }
+
                 else -> false
             }
         }

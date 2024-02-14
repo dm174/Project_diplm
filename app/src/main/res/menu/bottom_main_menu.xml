@@ -17,9 +17,5 @@
         android:icon="@drawable/users_circle_24"
         android:title="@string/users_fragment"/>
 
-    <item
-        android:id="@+id/navigation_profile"
-        android:enabled="true"
-        android:icon="@drawable/profile_24"
-        android:title="@string/profile_fragment"/>
+
 </menu>
