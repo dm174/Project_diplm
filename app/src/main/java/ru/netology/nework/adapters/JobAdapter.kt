@@ -59,6 +59,7 @@ class JobViewHolder(
             }
             jobEdit.isVisible = onInteractionListener.myOrNo(job)
             jobRemove.isVisible = onInteractionListener.myOrNo(job)
+
             postListeners(job)
         }
     }

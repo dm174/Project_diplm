@@ -75,7 +75,7 @@
     <string name="description_image_attachment">Place for image</string>
     <string name="offline">OFFLINE</string>
     <string name="online">ONLINE</string>
-    <string name="date_event_hint">YYYY-MM-DD</string>
+    <string name="date_event_hint">dd.mm.yyyy</string>
     <string name="time_event_hint">HH:mm</string>
     <string name="not_value_event">List is empty</string>
     <string name="leave">Leave</string>
@@ -86,8 +86,8 @@
     <string name="job_organization_hint">Place for working</string>
     <string name="job_position_hint">Position</string>
     <string name="job_working_period_hint">Start working date - End working date</string>
-    <string name="job_working_period_start">Start (YYYY-MM-DD)</string>
-    <string name="job_working_period_end">End (YYYY-MM-DD)</string>
+    <string name="job_working_period_start">Start (dd.mm.yyyy)</string>
+    <string name="job_working_period_end">End (dd.mm.yyyy)</string>
     <string name="job_description">Jobs: </string>
     <string name="event_description">Events:</string>
     <string name="post_description">Posts:</string>

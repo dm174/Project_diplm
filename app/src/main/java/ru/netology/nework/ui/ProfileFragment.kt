@@ -399,6 +399,7 @@ class ProfileFragment : Fragment() {
                 getString(R.string.no_jobs)
             } else {
                 getString(R.string.job_description)
+
             }
         }
 

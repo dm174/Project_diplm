@@ -75,7 +75,7 @@
     <string name="description_image_attachment">Место для картинки вложений</string>
     <string name="offline">OFFLINE</string>
     <string name="online">ONLINE</string>
-    <string name="date_event_hint">YYYY-MM-DD</string>
+    <string name="date_event_hint">dd.mm.yyyy</string>
     <string name="time_event_hint">HH:mm</string>
     <string name="not_value_event">Пока никого</string>
     <string name="leave">не смогу</string>
@@ -86,8 +86,8 @@
     <string name="job_organization_hint">Место работы</string>
     <string name="job_position_hint">Должность</string>
     <string name="job_working_period_hint">Start working date - End working date</string>
-    <string name="job_working_period_start">Начало (YYYY-MM-DD)</string>
-    <string name="job_working_period_end">Конец (YYYY-MM-DD)</string>
+    <string name="job_working_period_start">Начало (dd.mm.yyyy)</string>
+    <string name="job_working_period_end">Конец (dd.mm.yyyy)</string>
     <string name="job_description">"Работы: "</string>
     <string name="event_description">События:</string>
     <string name="post_description">Посты:</string>
