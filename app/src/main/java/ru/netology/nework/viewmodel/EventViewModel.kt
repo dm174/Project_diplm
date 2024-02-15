@@ -99,7 +99,7 @@ class EventViewModel @Inject constructor(
     fun changeContent(content: String, link: String?, datetime:String, type: EventType, speakerIds: List<Long>) {
         val text = content.trim()
         if (edited.value?.content == text && edited.value?.link == link && edited.value?.datetime == datetime && edited.value?.type == type && edited.value?.speakerIds == speakerIds) return
-        edited.value = edited.value?.copy(content = text, link = link, datetime = datetime, type=type, speakerIds = speakerIds)
+        edited.value = edited.value?.copy(content = text, link = link, datetime =  datetime, type=type, speakerIds = speakerIds)
     }
 
     fun deleteAttachment() {
