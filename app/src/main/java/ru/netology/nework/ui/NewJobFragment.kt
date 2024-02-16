@@ -54,10 +54,14 @@ class NewJobFragment : Fragment() {
                 val targetFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
                 val formattedStart: String = targetFormat.format(sourceFormat.parse(job.start)!!)
-               val formattedFinish: String = targetFormat.format(sourceFormat.parse(job.finish)!!)
+                val formattedFinish: String = targetFormat.format(job.finish?.let {
+                    sourceFormat.parse(
+                        it
+                    )
+                }!!)
 
-                  dateStartWorkingInput.setText(formattedStart)
-                   dateEndWorkingInput.setText(formattedFinish)
+                dateStartWorkingInput.setText(formattedStart)
+                dateEndWorkingInput.setText(formattedFinish)
 
 
                 inputLink.setText(job.link)
