@@ -15,6 +15,9 @@ import ru.netology.nework.auxiliary.ConstantValues.emptyJob
 import ru.netology.nework.auxiliary.FloatingValue.currentFragment
 import ru.netology.nework.databinding.FragmentNewJobBinding
 import ru.netology.nework.viewmodel.JobViewModel
+import java.text.SimpleDateFormat
+import java.util.Locale
+
 @AndroidEntryPoint
 class NewJobFragment : Fragment() {
 
@@ -43,8 +46,20 @@ class NewJobFragment : Fragment() {
             if (job != emptyJob) {
                 jobOrganizationInput.setText(job.name)
                 jobPositionInput.setText(job.position)
-                dateStartWorkingInput.setText(job.start)
-                dateEndWorkingInput.setText(job.finish)
+
+                //dateStartWorkingInput.setText(job.start)
+              //  dateEndWorkingInput.setText(job.finish)
+
+                val sourceFormat =  SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                val targetFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+
+                val formattedStart: String = targetFormat.format(sourceFormat.parse(job.start)!!)
+               val formattedFinish: String = targetFormat.format(sourceFormat.parse(job.finish)!!)
+
+                  dateStartWorkingInput.setText(formattedStart)
+                   dateEndWorkingInput.setText(formattedFinish)
+
+
                 inputLink.setText(job.link)
             }
 
