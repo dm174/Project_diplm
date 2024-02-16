@@ -56,6 +56,7 @@ interface PostDaoRoom {
     suspend fun insertUsers(users: List<UserEntity>)
 
     @Query("SELECT * FROM EventsEntity ORDER BY id DESC")
+
     fun getAllEvents(): Flow<List<EventsEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

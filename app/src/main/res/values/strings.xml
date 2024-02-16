@@ -86,8 +86,8 @@
     <string name="job_organization_hint">Place for working</string>
     <string name="job_position_hint">Position</string>
     <string name="job_working_period_hint">Start working date - End working date</string>
-    <string name="job_working_period_start">Start (dd.mm.yyyy)</string>
-    <string name="job_working_period_end">End (dd.mm.yyyy)</string>
+    <string name="job_working_period_start">Start (dd-mm-yyyy)</string>
+    <string name="job_working_period_end">End (dd-mm-yyyy)</string>
     <string name="job_description">Jobs: </string>
     <string name="event_description">Events:</string>
     <string name="post_description">Posts:</string>

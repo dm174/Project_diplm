@@ -15,7 +15,8 @@ import ru.netology.nework.auxiliary.ConstantValues
 import ru.netology.nework.dto.*
 import ru.netology.nework.repository.Repository
 import javax.inject.Inject
-
+import java.text.SimpleDateFormat
+import java.util.Locale
 @HiltViewModel
 class JobViewModel @Inject constructor(
     application: Application,
@@ -94,17 +95,25 @@ class JobViewModel @Inject constructor(
         finish: String?,
         link: String?
     ) {
+        val sourceFormat =  SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+        val targetFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+        val formattedStart: String = targetFormat.format(sourceFormat.parse(start)!!)
+        val formattedFinish: String = targetFormat.format(sourceFormat.parse(finish)!!)
+        //val formattedFinish: String? = finish?.let { targetFormat.format(sourceFormat.parse(it)!!) }
+
         if (edited.value?.name == name
             && edited.value?.position == position
-            && edited.value?.start == start
-            && edited.value?.finish == finish
+            && edited.value?.start == formattedStart
+            && edited.value?.finish == formattedFinish
             && edited.value?.link == link
         ) return
+
         edited.value = edited.value?.copy(
             name = name,
             position = position,
-            start = start,
-            finish = finish,
+            start = formattedStart,
+            finish = formattedFinish,
             link = link
         )
     }

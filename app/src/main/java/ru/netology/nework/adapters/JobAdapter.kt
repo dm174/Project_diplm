@@ -8,8 +8,6 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nework.databinding.FragmentCardJobBinding
 import ru.netology.nework.dto.Job
-import java.text.SimpleDateFormat
-import java.util.Date
 
 interface OnInteractionListenerJob {
     fun onEdit(job: Job) {}
