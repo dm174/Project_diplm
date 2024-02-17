@@ -233,9 +233,14 @@ class EventsFragment : Fragment() {
 
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                     return when (menuItem.itemId) {
+                        R.id.navigation_profile -> {
+                            findNavController().navigate(
+                                R.id.action_eventsFragment_to_profileFragment)
+                            true
+                        }
                         R.id.signin -> {
                             findNavController().navigate(
-                                R.id.action_feedFragment_to_authFragment,
+                                R.id.action_eventsFragment_to_authFragment,
                                 Bundle().apply {
                                     textArg = getString(R.string.sign_in)
                                 }
@@ -245,7 +250,7 @@ class EventsFragment : Fragment() {
 
                         R.id.signup -> {
                             findNavController().navigate(
-                                R.id.action_feedFragment_to_authFragment,
+                                R.id.action_eventsFragment_to_authFragment,
                                 Bundle().apply {
                                     textArg = getString(R.string.sign_up)
                                 }
@@ -265,10 +270,7 @@ class EventsFragment : Fragment() {
                                 .show()
                             true
                         }
-                        R.id.navigation_profile -> {
-                            findNavController().navigate(R.id.action_eventsFragment_to_profileFragment)
-                            true
-                        }
+
                         else -> false
                     }
                 }
@@ -284,6 +286,7 @@ class EventsFragment : Fragment() {
                 }
 
                 R.id.navigation_events -> {
+
                     true
                 }
 
@@ -298,6 +301,9 @@ class EventsFragment : Fragment() {
             }
         }
         binding.mainNavView.selectedItemId = R.id.navigation_events
+
+
+
         binding.fab.setOnClickListener {
             if (authViewModel.authenticated) {
                 findNavController().navigate(R.id.action_eventsFragment_to_newEventFragment)

@@ -19,7 +19,7 @@
             app:showAsAction="never" />
         <item
             android:id="@+id/navigation_profile"
-            android:enabled="true"
+            app:showAsAction="never"
             android:title="@string/profile_fragment"/>
     </group>
 </menu>
