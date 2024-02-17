@@ -77,7 +77,7 @@
     <string name="description_image_attachment">Place for image</string>
     <string name="offline">OFFLINE</string>
     <string name="online">ONLINE</string>
-    <string name="date_event_hint">dd.mm.yyyy</string>
+    <string name="date_event_hint">dd-mm-yyyy</string>
     <string name="time_event_hint">HH:mm</string>
     <string name="not_value_event">List is empty</string>
     <string name="leave">Leave</string>

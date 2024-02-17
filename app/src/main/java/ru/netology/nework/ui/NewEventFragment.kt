@@ -41,6 +41,8 @@ import ru.netology.nework.viewmodel.EventViewModel
 import ru.netology.nework.viewmodel.UsersViewModel
 import java.io.File
 import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 @AndroidEntryPoint
 class NewEventFragment : Fragment() {
@@ -82,7 +84,15 @@ class NewEventFragment : Fragment() {
                 edit.setText(event.content)
                 inputLink.setText(event.link)
                 countMentions.text = event.speakerIds.size.toString()
-                dateEventInput.setText(event.datetime.take(10))
+
+                val sourceFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+                val targetFormat =  SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                val formattedStart: String = targetFormat.format(sourceFormat.parse(event.datetime.take(10))!!)
+
+
+
+                dateEventInput.setText(formattedStart)
                 timeEventInput.setText(event.datetime.subSequence(11,16))
             }
 
@@ -131,15 +141,23 @@ class NewEventFragment : Fragment() {
                 override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                     menuInflater.inflate(R.menu.menu_new_post, menu)
                 }
-
+                private fun formatDate(inputDate: String): String {
+                    val sourceFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+                    val targetFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+                    return targetFormat.format(sourceFormat.parse(inputDate)!!)
+                }
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean =
                     when (menuItem.itemId) {
                         R.id.save -> {
                             fragmentBinding?.let {
+                                val formattedDate = formatDate(it.dateEventInput.text.toString())
+                                val formattedDateTime = "$formattedDate ${it.timeEventInput.text.toString()}"
+
+
                                 viewModel.changeContent(
                                     it.edit.text.toString(),
                                     it.inputLink.text.toString().ifEmpty { null },
-                                    "${it.dateEventInput.text.toString()} ${it.timeEventInput.text.toString()}",
+                                    formattedDateTime,
                                     typeEvent,
                                     speakersIds
                                 )
