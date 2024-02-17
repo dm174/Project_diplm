@@ -82,7 +82,6 @@ class NewEventFragment : Fragment() {
                 edit.setText(event.content)
                 inputLink.setText(event.link)
                 countMentions.text = event.speakerIds.size.toString()
-
                 dateEventInput.setText(event.datetime.take(10))
                 timeEventInput.setText(event.datetime.subSequence(11,16))
             }
