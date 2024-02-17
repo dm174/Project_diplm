@@ -8,6 +8,8 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import ru.netology.nework.databinding.FragmentCardJobBinding
 import ru.netology.nework.dto.Job
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 interface OnInteractionListenerJob {
     fun onEdit(job: Job) {}
@@ -52,15 +54,15 @@ class JobViewHolder(
             jobOrganization.text = job.name
             jobPosition.text = job.position
 
-            val startingDate = job.start?.let {
-                it.substring(8..9) + it.substring(4..7) + it.substring(0..3)
-            } ?: "..."  // значение по умолчанию, если job.start == null
 
-            val endingDate = job.finish?.let {
-                it.substring(8..9) + it.substring(4..7) + it.substring(0..3)
-            } ?: "..."  // значение по умолчанию, если job.finish == null
+            val sourceFormat =  SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
 
-            val workingPeriod = "$startingDate\n$endingDate"
+            val targetFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
+            val startingDate: String = targetFormat.format(sourceFormat.parse(job.start)!!)
+            val endingDate: String = targetFormat.format(sourceFormat.parse(job.finish)!!)
+
+
+            val workingPeriod = "$startingDate\n$endingDate".replace("-", ".")
             jobWorking.text = workingPeriod
 
             jobLink.isVisible = (job.link != null)

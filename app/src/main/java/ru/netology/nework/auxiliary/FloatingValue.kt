@@ -11,8 +11,9 @@ object FloatingValue {
 
     fun convertDatePublished(dateString: String): String {
 
-        val date = dateString.substring(8..9)+dateString.substring(4..7)+dateString.substring(0..3)
-      //  val date = dateString.substring(0..9)
+        val date1 = dateString.substring(8..9)+dateString.substring(4..7)+dateString.substring(0..3)
+      val date=date1.replace("-", ".")
+        //  val date = dateString.substring(0..9)
         val time = dateString.substring(11..18)
         return "$date $time"
     }

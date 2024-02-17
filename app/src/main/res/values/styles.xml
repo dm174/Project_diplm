@@ -35,5 +35,13 @@
         <item name="android:minWidth">@dimen/icon_button_min_size</item>
         <item name="android:minHeight">@dimen/icon_button_min_size</item>
     </style>
-    
+
+
+    <style name="RoundedButtonShape">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item> <!-- Установите радиус закругления в dp, как вам угодно -->
+    </style>
+
+
+
 </resources>
