@@ -102,14 +102,22 @@ class AuthFragment : Fragment() {
                     binding.errorMessage.visibility = View.GONE
                 }
 
-                1 -> {
-                    binding.errorMessage.visibility = View.VISIBLE
-                    binding.errorMessage.setText(R.string.not_pass_enter)
-                }
+                //1 -> {
+                //    binding.errorMessage.visibility = View.VISIBLE
+                //    binding.errorMessage.setText(R.string.not_pass_enter)
+               // }
 
                 else -> {
                     binding.errorMessage.visibility = View.VISIBLE
-                    binding.errorMessage.text = getString(R.string.eror_code) + ": $it"
+                    val errorMessage = viewModel.errorMessage.value ?: getString(R.string.not_pass_enter)
+
+                   val modifiedErrorMessage = when {
+                        "Incorrect password" in errorMessage -> errorMessage.replace("Incorrect password", getString(R.string.incorrect_login_password))
+                        "User already registered" in errorMessage -> errorMessage.replace("User already registered", getString(R.string.user_already_registered))
+                        else -> errorMessage
+                    }
+
+                    binding.errorMessage.text = modifiedErrorMessage
                 }
             }
         }

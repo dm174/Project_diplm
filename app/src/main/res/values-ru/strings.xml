@@ -48,7 +48,9 @@
     <string name="yes">Да!</string>
     <string name="no">Передумал</string>
     <string name="eror_code">Код ошибки</string>
-    <string name="not_pass_enter">Неверный логин или пароль</string>
+    <string name="not_pass_enter">Неизвестная ошибка</string>
+    <string name="incorrect_login_password">Некорректный логин/пароль</string>
+    <string name="user_already_registered">Пользователь с таким логином уже зарегистрирован</string>
     <string name="action_not_allowed">Действие доступно только для зарегистрированных пользователей</string>
     <string name="back">Назад</string>
     <string name="hint_enter_name">Имя</string>

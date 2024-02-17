@@ -1,5 +1,6 @@
 package ru.netology.nework.viewmodel
-
+import org.json.JSONObject
+import retrofit2.Response
 import android.net.Uri
 import androidx.lifecycle.*
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -25,6 +26,11 @@ class AuthViewModel @Inject constructor(
     private val appAuth: AppAuth,
     private val apiService: ApiService,
 ) : ViewModel() {
+
+    private val _errorMessage = MutableLiveData<String>()
+    val errorMessage: LiveData<String>
+        get() = _errorMessage
+
     val data: LiveData<AuthState> = appAuth
         .authStateFlow
         .asLiveData(Dispatchers.Default)
@@ -39,6 +45,7 @@ class AuthViewModel @Inject constructor(
         _photo.value = MediaModel(uri, file)
     }
     private val _dataState = MutableLiveData(-1)
+
     val dataState: LiveData<Int>
         get() = _dataState
 
@@ -53,6 +60,7 @@ class AuthViewModel @Inject constructor(
                 val response = apiService.login(login, pass)
 
                 if (!response.isSuccessful) {
+                    _errorMessage.value = parseErrorMessage(response)
                     _dataState.value = 1
 
                     //throw ApiError(response.code(), response.message())
@@ -89,11 +97,11 @@ class AuthViewModel @Inject constructor(
                 }
 
                 if (!response.isSuccessful) {
+                    _errorMessage.value = parseErrorMessage(response)
+                    // Оповестить UI об ошибке
                     _dataState.value = 1
-
-                    //throw ApiError(response.code(), response.message())
                 } else {
-                    token = response.body() ?: Token(id = 0, token = "")
+                    val token = response.body() ?: Token(id = 0, token = "")
                     appAuth.setAuth(token.id, token.token, null)
                     _dataState.value = 0
                 }
@@ -105,5 +113,17 @@ class AuthViewModel @Inject constructor(
                 //throw UnknownError
             }
         }
+    }
+
+    private fun parseErrorMessage(response: Response<*>): String {
+        try {
+            val jsonObject = JSONObject(response.errorBody()?.string() ?: "")
+            return jsonObject.optString("reason", "Unknown error")
+        } catch (e: Exception) {
+            return "Unknown error"
+        }
+    }
+    private fun clearErrorMessage() {
+        _errorMessage.value = ""
     }
 }
